@@ -32,18 +32,16 @@
                 <field name="arch" type="xml">
                     <kanban>
                         <templates>
-                                    <field name="name"/>
                             <t t-name="kanban-box">
                                 <div class="oe_kanban_global_click" >
-                                    <button name="%(student_management.kanban_tree_action)d" type="action" class="oe_stat_button">
-
-                                    <field name="name"/>
-                                     <div>
-                                        So luong sinh vien muon sach: 1
-<!--                                         <field name="expected_price"/>-->
+                                    <div class="oe_button_box" name="button_box">
+                                        <button name="%(student_management.kanban_tree_action)d" type="action" class="oe_stat_button">
+                                            <field name="name"/>
+                                             <div>
+                                                So luong sinh vien muon sach: <field name="so_luong_sv" />
+                                            </div>
+                                        </button>
                                     </div>
-                                    </button>
-
                                 </div>
                             </t>
                         </templates>

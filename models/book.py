@@ -11,6 +11,7 @@ class Book(models.Model):
     book_year_exp = fields.Integer("Nam xuat ban")
     book_author = fields.Char("Tac gia")
     book_student_id = fields.Many2one('student.student', 'Student')
+    so_luong_sv = fields.Integer('So luong sinh vien muon sach',compute='_compute_so_luong_sv', store=True)
 
     @api.model
     def create(self, vals):
@@ -26,3 +27,8 @@ class Book(models.Model):
             if vals['book_masach'] in masach:
                 raise ValidationError('Ma sach ton tai')
         return super().create(vals)
+
+    @api.depends('book_student_id')
+    def _compute_so_luong_sv(self):
+        for record in self:
+            record.so_luong_sv = 1 if record.book_student_id else 0
