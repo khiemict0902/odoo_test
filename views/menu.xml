@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="SM_menu_root" name="Student Management">
+            <menuitem id="SM_first_level_menu" name="Student">
+                <menuitem id="SM_menu_action" action="student_model_action"/>
+            </menuitem>
+            <menuitem id="Book_first_level_menu" name="Book">
+                <menuitem id="SM_menu_book_action" action="book_action"/>
+<!--                <menuitem id="SM_menu_book_kanban_action" action="book_kanban_action"/>-->
+            </menuitem>
+        </menuitem>
+    </data>
+
+</odoo>

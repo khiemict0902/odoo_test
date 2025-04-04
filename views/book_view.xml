@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="book_action" model="ir.actions.act_window">
+            <field name="name">Book</field>
+            <field name="res_model">library.book</field>
+            <field name="view_mode">kanban,form,tree</field>
+        </record>
+
+
+        <record id="book_tree" model="ir.ui.view">
+                <field name="name">Book List</field>
+                <field name="model">library.book</field>
+                <field name="arch" type="xml">
+                    <tree string="Channel">
+                        <field name="name"/>
+                        <field name="book_masach"/>
+                        <field name="book_year_exp"/>
+                        <field name="book_author"/>
+                    </tree>
+                </field>
+        </record>
+
+
+
+
+        <record id="book_kanban" model="ir.ui.view">
+                <field name="name">Book Kanban</field>
+                <field name="model">library.book</field>
+                <field name="arch" type="xml">
+                    <kanban>
+                        <templates>
+                                    <field name="name"/>
+                            <t t-name="kanban-box">
+                                <div class="oe_kanban_global_click" >
+                                    <button name="%(student_management.kanban_tree_action)d" type="action" class="oe_stat_button">
+
+                                    <field name="name"/>
+                                     <div>
+                                        So luong sinh vien muon sach: 1
+<!--                                         <field name="expected_price"/>-->
+                                    </div>
+                                    </button>
+
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                </field>
+        </record>
+
+
+        <record id="kanban_tree_action" model="ir.actions.act_window">
+            <field name="name">Banban Tree</field>
+            <field name="res_model">student.student</field>
+            <field name="domain">[('book_ids','=', active_id)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+</odoo>

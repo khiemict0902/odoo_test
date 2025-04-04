@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+<record id="student_model_action" model="ir.actions.act_window">
+    <field name="name">Tree</field>
+    <field name="res_model">student.student</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="student_search" model="ir.ui.view">
+        <field name="name">Student Search</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <search string="Channel">
+                <field name="stu_name"/>
+                <field name="stu_id"/>
+                <field name="stu_ten_hien_thi"/>
+<!--                <filter string="Ngay Sinh" name="stu_ngay_sinh"/>-->
+<!--                <group expand="0" string="Nhóm">-->
+                <field name="stu_ngay_sinh" string="Ngày sinh"/>
+                <field name="so_luong_sach"/>
+                <filter string="Sinh Vien Muon Sach" name="Sinh Vien muon sach" domain="[('so_luong_sach','!=','0')]"/>
+<!--                </group>-->
+            </search>
+        </field>
+</record>
+
+        <record id="student_tree" model="ir.ui.view">
+            <field name="name">Student Tree</field>
+            <field name="model">student.student</field>
+            <field name="arch" type="xml">
+                <tree string="Channel">
+                    <field name="stu_name"/>
+                    <field name="stu_id"/>
+                    <field name="stu_ten_hien_thi"/>
+                    <field name="stu_ngay_sinh" string="Ngày sinh"/>
+                    <field name="so_luong_sach"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_form" model="ir.ui.view">
+        <field name="name">Student List</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <form string="Channel">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(student_management.partner_action)d" type="action" class="oe_stat_button" icon="fa-money">
+                            Lien he
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="stu_name"/>
+                            <field name="stu_id"/>
+                            <field name="stu_ten_hien_thi"/>
+                            <field name="so_luong_sach"/>
+                        </group>
+                        <group>
+                            <field name="stu_ngay_sinh"/>
+                            <field name="stu_email"/>
+                            <field name="stu_sdt"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+                        <page string="Book">
+                            <field name="book_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+</record>
+
+    </data>
+</odoo>
