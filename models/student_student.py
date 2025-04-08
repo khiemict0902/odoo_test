@@ -3,33 +3,33 @@ from odoo import fields, models, api
 
 class Student(models.Model):
     _name = 'student.student'
-    _description = 'Description'
-    _rec_name = 'stu_ten_hien_thi'
+    _description = 'Quản lý thông tin sinh viên'
+    _rec_name = 'stu_display_name'
     _sql_constraints = [
-        ("check_stu_id", "UNIQUE(stu_id)", "Mã sinh viên đã tồn tại, vui lòng nhập mã sinh viên khác!"),
+        ("check_stu_code", "UNIQUE(stu_code)", "Mã sinh viên đã tồn tại, vui lòng nhập mã sinh viên khác!"),
     ]
 
-    stu_name = fields.Char('Tên Sinh Viên')
-    stu_id = fields.Char('Ma Sinh Viên')
-    stu_ten_hien_thi = fields.Char('Tên hien thi', readonly=True, compute='_compute_stu_ten_hien_thi')
-    stu_ngay_sinh = fields.Date('Ngay sinh')
+    stu_name = fields.Char('Tên sinh viên')
+    stu_code = fields.Char('Mã sinh viên')
+    stu_display_name = fields.Char('Tên hiển thị', readonly=True, compute='_compute_stu_display_name')
+    stu_birth_date = fields.Date('Ngày sinh')
     stu_email = fields.Char('Email')
-    stu_sdt = fields.Char('So dien thoai')
+    stu_phone = fields.Char('Số điện thoại')
 
-    lien_he_ids = fields.One2many('res.partner', 'student_id', "Lien he")
-    book_ids = fields.One2many("library.book", "book_student_id", "Sach", readonly=True)
+    contact_ids = fields.One2many('res.partner', 'student_id', "Liên hệ")
+    book_ids = fields.One2many("library.book", "book_student_id", "Sách", readonly=True)
 
-    so_luong_sach =fields.Char('So luong sach', compute='_compute_book_count', store=True)
+    stu_nums_book =fields.Char('Số lượng sách', compute='_compute_book_count', store=True)
 
-    @api.depends('stu_name', 'stu_id')
-    def _compute_stu_ten_hien_thi(self):
+    @api.depends('stu_name', 'stu_code')
+    def _compute_stu_display_name(self):
         for record in self:
-            if record.stu_id != False and  record.stu_id != False:
-                record.stu_ten_hien_thi = str(record.stu_id) + '-' + str(record.stu_name)
+            if record.stu_code != False and  record.stu_code != False:
+                record.stu_display_name = str(record.stu_code) + '-' + str(record.stu_name)
             else:
-                record.stu_ten_hien_thi = ''
+                record.stu_display_name = ''
     @api.depends('book_ids')
     def _compute_book_count(self):
         for record in self:
             book_number = len(record.mapped('book_ids.id'))
-            record.so_luong_sach = str(book_number)
+            record.stu_nums_book = str(book_number)

@@ -9,6 +9,13 @@
             <field name="view_mode">kanban,form,tree</field>
         </record>
 
+        <record id="kanban_tree_action" model="ir.actions.act_window">
+            <field name="name">Banban Tree</field>
+            <field name="res_model">student.student</field>
+            <field name="domain">[('book_ids','=', active_id)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
 
         <record id="book_tree" model="ir.ui.view">
                 <field name="name">Book List</field>
@@ -16,7 +23,7 @@
                 <field name="arch" type="xml">
                     <tree string="Channel">
                         <field name="name"/>
-                        <field name="book_masach"/>
+                        <field name="book_code"/>
                         <field name="book_year_exp"/>
                         <field name="book_author"/>
                     </tree>
@@ -38,7 +45,7 @@
                                         <button name="%(student_management.kanban_tree_action)d" type="action" class="oe_stat_button">
                                             <field name="name"/>
                                              <div>
-                                                So luong sinh vien muon sach: <field name="so_luong_sv" />
+                                                Số lượng sinh viên mượn sách: <field name="book_nums_student" />
                                             </div>
                                         </button>
                                     </div>
@@ -50,12 +57,7 @@
         </record>
 
 
-        <record id="kanban_tree_action" model="ir.actions.act_window">
-            <field name="name">Banban Tree</field>
-            <field name="res_model">student.student</field>
-            <field name="domain">[('book_ids','=', active_id)]</field>
-            <field name="view_mode">tree,form</field>
-        </record>
+
 
 
     </data>

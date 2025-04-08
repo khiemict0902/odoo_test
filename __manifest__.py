@@ -7,13 +7,13 @@
     # 'website': 'Website',
     # 'license': 'License',
     'depends': ['base'],
-    'data': ['views/menu.xml',
-             'views/book_view.xml',
-             'views/student_view.xml',
+    'data': ['security/ir.model.access.csv',
              'views/inherit_partner.xml',
-             'security/ir.model.access.csv'
+             'views/student_view.xml',
+             'views/book_view.xml',
+             'views/menu.xml',
              ],
-    # 'demo': ['Demo'],
+    'demo': ['Demo'],
     'installable': True,
     'application': True,
     'auto_install': True

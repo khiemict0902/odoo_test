@@ -15,14 +15,13 @@
         <field name="arch" type="xml">
             <search string="Channel">
                 <field name="stu_name"/>
-                <field name="stu_id"/>
-                <field name="stu_ten_hien_thi"/>
-<!--                <filter string="Ngay Sinh" name="stu_ngay_sinh"/>-->
-<!--                <group expand="0" string="Nhóm">-->
-                <field name="stu_ngay_sinh" string="Ngày sinh"/>
-                <field name="so_luong_sach"/>
-                <filter string="Sinh Vien Muon Sach" name="Sinh Vien muon sach" domain="[('so_luong_sach','!=','0')]"/>
-<!--                </group>-->
+                <field name="stu_code"/>
+                <field name="stu_display_name"/>
+                <group string="Group by">
+                    <filter name="stu_birth_date" string="Ngày sinh" context="{'group_by': 'stu_birth_date'}"/>
+                </group>
+                <field name="stu_nums_book"/>
+                <filter string="Sinh viên mượn sách" name="Sinh viên mượn sách" domain="[('stu_nums_book','!=','0')]"/>
             </search>
         </field>
 </record>
@@ -33,10 +32,10 @@
             <field name="arch" type="xml">
                 <tree string="Channel">
                     <field name="stu_name"/>
-                    <field name="stu_id"/>
-                    <field name="stu_ten_hien_thi"/>
-                    <field name="stu_ngay_sinh" string="Ngày sinh"/>
-                    <field name="so_luong_sach"/>
+                    <field name="stu_code"/>
+                    <field name="stu_display_name"/>
+                    <field name="stu_birth_date" string="Ngày sinh"/>
+                    <field name="stu_nums_book"/>
                 </tree>
             </field>
         </record>
@@ -49,20 +48,20 @@
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="%(student_management.partner_action)d" type="action" class="oe_stat_button" icon="fa-money">
-                            Lien he
+                            Liên hệ
                         </button>
                     </div>
                     <group>
                         <group>
                             <field name="stu_name"/>
-                            <field name="stu_id"/>
-                            <field name="stu_ten_hien_thi"/>
-                            <field name="so_luong_sach"/>
+                            <field name="stu_code"/>
+                            <field name="stu_display_name"/>
+                            <field name="stu_nums_book"/>
                         </group>
                         <group>
-                            <field name="stu_ngay_sinh"/>
+                            <field name="stu_birth_date"/>
                             <field name="stu_email"/>
-                            <field name="stu_sdt"/>
+                            <field name="stu_phone"/>
 
                         </group>
 
