@@ -13,7 +13,6 @@
              'views/book_view.xml',
              'views/menu.xml',
              ],
-    'demo': ['Demo'],
     'installable': True,
     'application': True,
     'auto_install': True
