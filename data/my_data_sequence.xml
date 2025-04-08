@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="book_sequence_id" model="ir.sequence">
+            <field name="name">Book Sequence</field>
+            <field name="code">book.code.sequence</field>
+            <field name="prefix">TV</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>

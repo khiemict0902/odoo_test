@@ -9,8 +9,8 @@ class Student(models.Model):
         ("check_stu_code", "UNIQUE(stu_code)", "Mã sinh viên đã tồn tại, vui lòng nhập mã sinh viên khác!"),
     ]
 
-    stu_name = fields.Char('Tên sinh viên')
-    stu_code = fields.Char('Mã sinh viên')
+    stu_name = fields.Char('Tên sinh viên', required=True)
+    stu_code = fields.Char('Mã sinh viên', required=True)
     stu_display_name = fields.Char('Tên hiển thị', readonly=True, compute='_compute_stu_display_name')
     stu_birth_date = fields.Date('Ngày sinh')
     stu_email = fields.Char('Email')

@@ -8,6 +8,7 @@
     # 'license': 'License',
     'depends': ['base'],
     'data': ['security/ir.model.access.csv',
+             'data/my_data_sequence.xml',
              'views/inherit_partner.xml',
              'views/student_view.xml',
              'views/book_view.xml',
